@@ -1,0 +1,32 @@
+body{
+    margin:0;
+    background:#555;
+    color:#fff;
+}
+
+@mixin pc{
+    @media screen and (min-width:600px){
+        @content;
+    }
+}
+@mixin sp{
+    @media screen and (max-width:600px){
+        @content;
+    }
+}
+#container{
+    width:100%;
+    display:grid;
+    @include pc{
+        grid-template:300px 1fr;    
+    }
+    @include sp{
+        grid-template:300px 100vw;    
+        margin-left:-300px;
+        &.open{
+            margin-left:0;
+        }
+    }
+}
+@import "header.scss";
+@import "main.scss";

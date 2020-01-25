@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  background: #555;
+  color: #fff;
+}
+
+#container {
+  width: 100%;
+  display: grid;
+}
+@media screen and (min-width: 600px) {
+  #container {
+    grid-template: 300px 1fr;
+  }
+}
+@media screen and (max-width: 600px) {
+  #container {
+    grid-template: 300px 100vw;
+    margin-left: -300px;
+  }
+  #container.open {
+    margin-left: 0;
+  }
+}
+
+header {
+  width: 300px;
+  height: 100%;
+  background: #000;
+}
+
+main {
+  height: 50px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlLnNjc3MiLCJfc3R5bGUuY3NzIiwiaGVhZGVyLnNjc3MiLCJtYWluLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxTQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0FDQ0o7O0FEWUE7RUFDSSxXQUFBO0VBQ0EsYUFBQTtBQ1RKO0FERkk7RUFTSjtJQUlRLHdCQUFBO0VDUE47QUFDRjtBREZJO0VBSUo7SUFPUSwwQkFBQTtJQUNBLG1CQUFBO0VDTE47RURNTTtJQUNJLGNBQUE7RUNKVjtBQUNGOztBQ3ZCQTtFQUNJLFlBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7QUQwQko7O0FFN0JBO0VBQ0ksWUFBQTtBRmdDSiIsImZpbGUiOiJfc3R5bGUuY3NzIn0= */

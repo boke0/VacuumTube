@@ -10,5 +10,6 @@ $plugin->endpoint(DashEndpoint::class);
 $plugin->endpoint(EditorEndpoint::class);
 $plugin->endpoint(LoginEndpoint::class);
 $plugin->endpoint(LogoutEndpoint::class);
+$plugin->endpoint(InstallEndpoint::class);
 
 return $plugin;

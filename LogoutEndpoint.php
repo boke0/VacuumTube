@@ -4,7 +4,7 @@ namespace Boke0\Mechanism\Plugins\VacuumTube;
 use \Boke0\Mechanism\Api\Endpoint;
 
 /**
- * @path /admin/logout;
+ * @path /admin/logout
  */
 class LogoutEndpoint extends Endpoint{
     public function handle($req,$args){
