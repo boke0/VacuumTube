@@ -1,15 +1,30 @@
-{% extends skeleton.tpl.html %}
-{% block content %}
-    <form method="POST">
-        <div>
-            <input name="screen_name" type="text" placeholder="ID">
-        </div>
-        <div>
-            <input name="password" type="password" placeholder="パスワード">
-        </div>
-        {{ csrf_field() }}
-        <div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/asset?plugin=VacuumTube&filename=installer.css">
+    <title>ボケマリック機構表示管初期設定</title>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1><img src="/asset?plugin=VacuumTube&filename=logo.svg" alt="ボケマリック機構"></h1>
+        </header>
+        <form method="POST">
+            <dl>
+                <dt>ID</dt>
+                <dd>
+                    <input type="text" name="screen_name" placeholder="ID">
+                </dd>
+                <dt>パスワード</dt>
+                <dd>
+                    <input type="password" name="password" placeholder="パスワード">
+                </dd>
+            </dl>
+            {{ csrf_field() }}
             <button>ログイン</button>
-        </div>
-    </form>
-{% endblock %}
+        </form>
+    </div>
+</body>
+</html>

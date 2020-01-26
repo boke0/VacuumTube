@@ -11,5 +11,6 @@ $plugin->endpoint(EditorEndpoint::class);
 $plugin->endpoint(LoginEndpoint::class);
 $plugin->endpoint(LogoutEndpoint::class);
 $plugin->endpoint(InstallEndpoint::class);
+$plugin->endpoint(SetupEndpoint::class);
 
 return $plugin;

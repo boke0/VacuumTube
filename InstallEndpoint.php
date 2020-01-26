@@ -20,16 +20,17 @@ class InstallEndpoint extends Endpoint{
             Cfg::set("dsn","mysql:host=$host;dbname=$dbname");
             Cfg::set("dbuser","$user");
             Cfg::set("dbpass","$pass");
+            Cfg::set("passwd_key",hash("sha256",uniqid().mt_rand()));
             $sql=<<<EOT
 use bm;
 create table user(
-    id int not null primary key,
+    id int not null primary key auto_increment,
     screen_name varchar(255) not null unique,
     name varchar(255) not null,
     password varchar(255) not null
 );
 create table invite(
-    id int not null primary key,
+    id int not null primary key auto_increment,
     screen_name varchar(255) not null unique,
     name varchar(255) not null,
     token varchar(255) not null

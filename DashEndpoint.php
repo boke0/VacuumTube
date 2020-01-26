@@ -8,7 +8,10 @@ use \Boke0\Mechanism\Api\Endpoint;
  */
 class DashEndpoint extends Endpoint{
     public function handle($req,$args){
-        if(!file_exists(__DIR__."/cfg.json")){
+        if(Session::get("vt_uid")==NULL){
+            return $this->createResponse()->withHeader("Location","/admin/login");
+        }
+        if(!file_exists(__DIR__."/../../contents/cfg.json")){
             return $this->createResponse()->withHeader("Location","/admin/install");
         }
         return $this->twig("dash.tpl.html");

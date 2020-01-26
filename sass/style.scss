@@ -1,7 +1,7 @@
 body{
     margin:0;
-    background:#555;
     color:#fff;
+    overflow-x:hidden;
 }
 
 @mixin pc{
@@ -14,18 +14,27 @@ body{
         @content;
     }
 }
+#trigger{
+    display:none;
+    &:checked+#container{
+        margin-left:0;
+        @include sp{
+            header h1 svg{
+                fill:#fff;
+            }
+        }
+    }
+}
 #container{
     width:100%;
     display:grid;
+    transition: margin 0.4s;
     @include pc{
-        grid-template:300px 1fr;    
+        grid-template-columns:300px 1fr;    
     }
     @include sp{
-        grid-template:300px 100vw;    
+        grid-template-columns:300px 100vw;    
         margin-left:-300px;
-        &.open{
-            margin-left:0;
-        }
     }
 }
 @import "header.scss";

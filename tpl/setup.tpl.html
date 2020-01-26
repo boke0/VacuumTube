@@ -13,25 +13,21 @@
         </header>
         <form method="POST">
             <dl>
-                <dt>データベースホスト名</dt>
+                <dt>ID</dt>
                 <dd>
-                    <input type="text" name="host" placeholder="データベースホスト名">
+                    <input type="text" name="screen_name" placeholder="ID" accept="/([a-zA-Z0-9_-]+)/">
                 </dd>
-                <dt>データベース名</dt>
+                <dt>表示名</dt>
                 <dd>
-                    <input type="text" name="dbname" placeholder="データベース名">
+                    <input type="text" name="name" placeholder="表示名">
                 </dd>
-                <dt>データベースユーザー名</dt>
+                <dt>パスワード</dt>
                 <dd>
-                    <input type="text" name="user" placeholder="データベースユーザー名<">
-                </dd>
-                <dt>データベースパスワード</dt>
-                <dd>
-                    <input type="password" name="pass" placeholder="データベースパスワード">
+                    <input type="password" name="password" placeholder="パスワード">
                 </dd>
             </dl>
             {{ csrf_field() }}
-            <button>ユーザー設定へ</button>
+            <button>利用開始</button>
         </form>
     </div>
 </body>
