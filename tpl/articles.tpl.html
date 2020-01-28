@@ -1,0 +1,98 @@
+{% extends "skeleton.tpl.html" %}
+{% block content %}
+    <dialog id="delete_dialog">
+        <h1 id="delete_path"></h1>
+        <p id="delete_description">この操作のあと、記事を復元することはできません</p>
+        <form id="delete_actions" action="/admin/article/delete">
+            <input type="hidden" name="path" id="delete_path_field">
+            {{csrf_field()}}
+            <button id="cancel" type="button">キャンセル</button>
+            <button>削除</button>
+        </form>
+    </dialog>
+    <a href="/admin/editor?path={{path}}"><button>新規記事</button></a>
+    <a href="/admin/section?path={{path}}"><button>新規セクション</button></a>
+    <div id="articles">
+        {% if sections|length>0 %}
+        {% for section in sections %}
+            <div class="item section">
+                <div class="detail">
+                    <div class="title">
+                        <a href="/article?path={{section.path}}">
+                            {{section.title}}
+                        </a>
+                    </div>
+                    <div class="slug">
+                        {{section.slug}}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% if index|length>0 %}
+            <div class="item page">
+                <div class="detail">
+                    <div class="title">
+                        {{page.title}}
+                    </div>
+                    <div class="slug">
+                        __index
+                    </div>
+                </div>
+                <div class="action">
+                    <a href="/editor?slug=__index&path={{path}}">
+                        目次ページを編集
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+        {% if menu|length>0 %}
+            <div class="item page">
+                <div class="detail">
+                    <div class="title">
+                        メニュー
+                    </div>
+                    <div class="slug">
+                        __menu
+                    </div>
+                </div>
+                <div class="action">
+                    <a href="/editor?path={{path}}&slug={{page.slug}}">
+                        メニューを編集
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+        {% if pages|length>0 %}
+        {% for page in pages %}
+            <div class="item page">
+                <div class="detail">
+                    <div class="title">
+                        {{page.title}}
+                    </div>
+                    <div class="slug">
+                        {{page.slug}}
+                    </div>
+                </div>
+                <div class="action">
+                    <a href="editor?path={{path}}&slug={{page.slug}}">
+                        記事を編集
+                    </a>
+                    <button onclick="delete('{{page.path}}')">
+                        記事を削除
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <script>
+        const dialog=document.querySelector("#delete_dialog");
+        function delete(path){
+            dialog.showModal();
+        }
+        document.querySelector("#cancel").onclick=function(){
+            dialog.close();
+        }
+    </script>
+{% endblock %}

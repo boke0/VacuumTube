@@ -2,14 +2,15 @@
 {% block content %}
     <form method="POST">
         <div>
-            <input name="screen_name" type="text" placeholder="ID">
+            <input name="path" type="text" placeholder="記事のパス">
         </div>
         <div>
-            <input name="password" type="password" placeholder="パスワード">
+            <textarea name="content" placeholder="Markdownで書いてね">
+            </textarea>
         </div>
         {{ csrf_field() }}
         <div>
-            <button>ログイン</button>
+            <button>投稿</button>
         </div>
     </form>
 {% endblock %}

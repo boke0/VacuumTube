@@ -8,6 +8,9 @@ use \Boke0\Mechanism\Api\Endpoint;
  */
 class EditorEndpoint extends Endpoint{
     public function handle($req,$args){
+        $qs=$req->getQueryString();
+        $path=$qs["path"];
+        $slug=$ps["slug"];
         if(Session::get("vt_uid")==NULL){
             return $this->createResponse()->withHeader("Location","/admin/login");
         }
