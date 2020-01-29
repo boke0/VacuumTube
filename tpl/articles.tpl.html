@@ -10,6 +10,15 @@
             <button>削除</button>
         </form>
     </dialog>
+    <dialog id="create_section_dialog">
+        <h1>セクションを作成</h1>
+        <dl>
+            <dt>パス</dt>
+            <dd>
+                <input type="text" name="path" value="{{path}}">
+            </dd>
+        </dl>
+    </dialog>
     <a href="/admin/editor?path={{path}}"><button>新規記事</button></a>
     <a href="/admin/section?path={{path}}"><button>新規セクション</button></a>
     <div id="articles">

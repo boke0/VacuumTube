@@ -39,7 +39,7 @@ EOT;
             $pdo=new \PDO(Cfg::get("dsn"),Cfg::get("dbuser"),Cfg::get("dbpass"));
             $stmt=$pdo->prepare($sql);
             $stmt->execute();
-            return $this->createResponse()->withHeader("Location","/admin");
+            return $this->createResponse()->withHeader("Location","/admin/install/setup");
         }
         return $this->twig("install.tpl.html");
     }

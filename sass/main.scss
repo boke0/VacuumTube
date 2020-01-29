@@ -2,3 +2,33 @@ main{
     padding:64px 16px;
     color:#000;
 }
+#articles{
+    .item{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        padding:16px;
+        box-sizing:border-box;
+        height:72px;
+        &.page{
+        }
+        &.section{
+        }
+        .action{
+            a{
+                height:40px;
+                display:inline-flex;
+                justify-content:center;
+                align-items:center;
+                font-size:0.8rem;
+                font-weight:bold;
+                text-decoration:none;
+                color:#fff;
+                background:#e52f36;
+                padding:0 12px;
+                border-radius:4px;
+                box-shadow:0 2px 10px -5px #000;
+            }
+        }
+    }
+}
