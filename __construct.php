@@ -13,5 +13,6 @@ $plugin->endpoint(LoginEndpoint::class);
 $plugin->endpoint(LogoutEndpoint::class);
 $plugin->endpoint(InstallEndpoint::class);
 $plugin->endpoint(SetupEndpoint::class);
+$plugin->endpoint(SettingEndpoint::class);
 
 return $plugin;
