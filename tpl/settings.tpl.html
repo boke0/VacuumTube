@@ -1,5 +1,25 @@
 {% extends "skeleton.tpl.html" %}
 {% block content %}
     <h2>設定</h2>
-    
+    <div id="settings">
+        <form method="POST" action="/admin/settings?type=db">
+            <h3>データベース変更</h3>
+            <dl>
+                <dt>DSN</dt>
+                <dd><input type="text" name="dsn" value="{{dsn}}"></dd>
+                <dt>ユーザー名</dt>
+                <dd><input type="text" name="user" value="{{dbuser}}"></dd>
+                <dt>パスワード</dt>
+                <dd><input type="password" name="password" value="{{dbpass}}"></dd>
+            </dl>
+            <button>変更</button>
+        </form>
+        <form method="POST" action="/admin/settings?type=struct">
+            <h3>サイト構造</h3>
+            <textarea name="struct">{{struct}}</textarea>
+            <div>
+                <button>変更</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

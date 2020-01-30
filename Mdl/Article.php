@@ -54,7 +54,7 @@ class Article{
                     file_get_contents(__DIR__.self::ROOTPATH.$path.$n)
                 );
                 if($text!=""){
-                    $title=(array)$text->getYAML()["title"];
+                    $title=$text->getYAML()["title"];
                 }else{
                     $title=substr($n,0,-3);
                 }

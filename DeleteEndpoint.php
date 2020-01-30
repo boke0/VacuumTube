@@ -17,13 +17,12 @@ class DeleteEndpoint extends Endpoint{
         $post=$req->getParsedBody();
         $path=urldecode($post["path"]);
         if(substr($path,0,1)!="/") $path="/$path";
-        if(substr($path,1,-1)!="/") $path="$path/";
         $fullpath=__DIR__."/../../contents$path";
-        if(is_dir($fullpath)){
-            exec("rm -rf {$fullpath}");
-        }else if(file_exists($fullpath)){
+        if(file_exists($fullpath)){
             unlink("$fullpath");
-        }
+        }else if(is_dir($fullpath)){
+            exec("rm -rf {$fullpath}");
+        } 
         $jumpto=dirname($path);
         return $this->createResponse()
                     ->withHeader("Location","/admin/articles?path={$jumpto}");

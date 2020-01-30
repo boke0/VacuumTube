@@ -139,4 +139,34 @@ main{
             }
         }
     }
+    #settings{
+        form{
+            padding: 0 0 24px;
+            textarea{
+                width:100%;
+                height:100px;
+                box-sizing:border-box;
+                margin-bottom:16px;
+            }
+            dl{
+                margin:0;
+                dt{
+                    font-size:0.8rem;
+                    font-weight:bold;
+                    padding:0 0 8px;
+                }
+                dd{
+                    margin:0;
+                    padding:0 0 16px;
+                    input{
+                        height:32px;
+                        line-height:32px;
+                        padding: 0 16px;
+                        box-sizing:border-box;
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
 }

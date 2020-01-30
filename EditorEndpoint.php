@@ -25,6 +25,8 @@ class EditorEndpoint extends Endpoint{
             $post=$req->getParsedBody();
             $articleMdl->postArticle($post["path"],$post["content"]);
             $md=$post["content"];
+            return $this->createResponse()
+                        ->withHeader("Location","/admin/articles?path=".dirname($post["path"]));
         }
         return $this->twig("editor.tpl.html",[
             "path"=>$path.$slug.".md",
