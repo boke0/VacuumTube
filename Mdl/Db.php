@@ -7,7 +7,7 @@ class Db{
     public function __construct(){
         $this->dbh=new \PDO(Cfg::get("dsn"),Cfg::get("dbuser"),Cfg::get("dbpass"));    
     }
-    public function query($sql,$values){
+    public function query($sql,$values=[]){
         $stmt=$this->dbh->prepare($sql);
         $stmt->execute($values);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);

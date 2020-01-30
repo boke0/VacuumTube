@@ -3,7 +3,23 @@ body{
     color:#fff;
     overflow-x:hidden;
 }
-
+a{
+    text-decoration:none;
+}
+button{
+    height:40px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 16px;
+    border:0;
+    border-radius:4px;
+    box-sizing:border-box;
+    box-shadow:0 5px 10px -8px #000;
+    background-color:#e52f36;
+    font-weight:bold;
+    color:#fff;
+}
 @mixin pc{
     @media screen and (min-width:600px){
         @content;

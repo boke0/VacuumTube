@@ -7,6 +7,7 @@ $plugin=new Plugin();
 
 $plugin->endpoint(ArticleEndpoint::class);
 $plugin->endpoint(DashEndpoint::class);
+$plugin->endpoint(UserEndpoint::class);
 $plugin->endpoint(EditorEndpoint::class);
 $plugin->endpoint(LoginEndpoint::class);
 $plugin->endpoint(LogoutEndpoint::class);

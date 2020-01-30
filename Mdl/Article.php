@@ -30,28 +30,28 @@ class Article{
         foreach($dir as $n){
             if(substr($n,0,1)=="."||substr($n,-4)=="json"||$n=="__menu.md") continue;
             if(is_dir(__DIR__.self::ROOTPATH.$n)){
-                if(file_exists(__DIR__.self::ROOTPATH.$n."/__index.md")){
+                if(file_exists(__DIR__.self::ROOTPATH.$path.$n."/__index.md")){
                     $text=$this->parser->parse(
-                        file_get_contents(__DIR__.self::ROOTPATH.$n."/__index.md")
+                        file_get_contents(__DIR__.self::ROOTPATH.$path.$n."/__index.md")
                     );
-                    $title=(array)$text->getYAML()["title"];
+                    $title=$text->getYAML()["title"];
                 }else{
                     $title=$n;
                 }
                 array_push($list["sections"],[
                     "title"=>$title,
                     "slug"=>$n,
-                    "path"=>$path.$n
+                    "path"=>urlencode($path.$n)
                 ]);
             }else if($n=="__index.md"){
                 $text=$this->parser->parse(
-                    file_get_contents(__DIR__.self::ROOTPATH."__index.md")
+                    file_get_contents(__DIR__.self::ROOTPATH.$path."__index.md")
                 );
-                $title=(array)$text->getYAML()["title"];
+                $title=$text->getYAML()["title"];
                 $list["index"]["title"]=$title;
             }else{
                 $text=$this->parser->parse(
-                    file_get_contents(__DIR__.self::ROOTPATH.$n)
+                    file_get_contents(__DIR__.self::ROOTPATH.$path.$n)
                 );
                 if($text!=""){
                     $title=(array)$text->getYAML()["title"];

@@ -19,15 +19,18 @@
             </dd>
         </dl>
     </dialog>
-    <a href="/admin/editor?path={{path}}"><button>新規記事</button></a>
-    <a href="/admin/section?path={{path}}"><button>新規セクション</button></a>
+    <h2>{{path_raw}}の記事</h2>
+    <div id="action_list">
+        <a href="/admin/editor?path={{path}}"><button>新規記事</button></a>
+        <a href="/admin/section?path={{path}}"><button>新規セクション</button></a>
+    </div>
     <div id="articles">
         {% if sections|length>0 %}
         {% for section in sections %}
             <div class="item section">
                 <div class="detail">
                     <div class="title">
-                        <a href="/article?path={{section.path}}">
+                        <a href="/admin/articles?path={{section.path}}">
                             {{section.title}}
                         </a>
                     </div>
@@ -42,14 +45,14 @@
             <div class="item page">
                 <div class="detail">
                     <div class="title">
-                        {{page.title}}
+                        {{index.title}}
                     </div>
                     <div class="slug">
                         __index
                     </div>
                 </div>
                 <div class="action">
-                    <a href="/editor?slug=__index&path={{path}}">
+                    <a href="/admin/editor?slug=__index&path={{path}}">
                         目次ページを編集
                     </a>
                 </div>
@@ -66,7 +69,7 @@
                     </div>
                 </div>
                 <div class="action">
-                    <a href="/editor?path={{path}}&slug={{page.slug}}">
+                    <a href="/admin/editor?path={{path}}&slug=__menu">
                         メニューを編集
                     </a>
                 </div>
@@ -84,7 +87,7 @@
                     </div>
                 </div>
                 <div class="action">
-                    <a href="editor?path={{path}}&slug={{page.slug}}">
+                    <a href="/admin/editor?path={{path}}&slug={{page.slug}}">
                         記事を編集
                     </a>
                     <button onclick="delete('{{page.path}}')">

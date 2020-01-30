@@ -15,14 +15,18 @@ class CreateSectionEndpoint extends Endpoint{
         if(!file_exists(__DIR__."/../../contents/cfg.json")){
             return $this->createResponse()->withHeader("Location","/admin/install");
         }
-        $post=$req->getParsedBody();
-        $articleMdl=new Mdl\Article();
-        $title=$post["title"]!=""?$post["title"]:"無題";
-        $path=isset($post["path"])?$post["path"]:"/";
-        $articleMdl->createSection($path,$title);
-        return $this->createResponse()
-                    ->withBody($body)
-                    ->withHeader("Content-Type","application/json");
+        try{
+            $post=$req->getParsedBody();
+            $articleMdl=new Mdl\Article();
+            $title=$post["title"]!=""?$post["title"]:"無題";
+            $path=isset($post["path"])?$post["path"]:"/";
+            $articleMdl->createSection($path,$title);
+            return $this->createResponse()
+                        ->withBody($body)
+                        ->withHeader("Content-Type","application/json");
+        }catch(\Exception $e){
+            return $this->createResponse($e->getCode(),$e->getMessage());
+        }
     }
 }
 

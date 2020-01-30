@@ -1,33 +1,82 @@
 main{
     padding:64px 16px;
     color:#000;
-}
-#articles{
-    .item{
-        width:100%;
-        display:flex;
-        justify-content:space-between;
-        padding:16px;
-        box-sizing:border-box;
-        height:72px;
-        &.page{
-        }
-        &.section{
-        }
-        .action{
-            a{
-                height:40px;
-                display:inline-flex;
-                justify-content:center;
-                align-items:center;
+    h2{
+        margin:0 0 32px;
+    }
+    #action_list{
+        padding:0 0 24px;
+    }
+    #editor{
+        dl{
+            margin:0;
+            dt{
                 font-size:0.8rem;
                 font-weight:bold;
-                text-decoration:none;
-                color:#fff;
-                background:#e52f36;
-                padding:0 12px;
-                border-radius:4px;
-                box-shadow:0 2px 10px -5px #000;
+                padding-bottom:4px;
+            }
+            dd{
+                margin:0;
+                padding:0 0 16px;
+                input{
+                    width:100%;
+                    height:32px;
+                    line-height:32px;
+                    padding:0 12px;
+                    box-sizing:border-box;
+                }
+                textarea{
+                    width:100%;
+                    box-sizing:border-box;
+                    height:300px;
+                    padding:12px;
+                }
+            }
+        }
+    }
+    #articles{
+        .item{
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            padding:16px;
+            box-sizing:border-box;
+            height:72px;
+            &.page{
+            }
+            &.section{
+                a{
+                    color:#e52f36;
+                }
+            }
+            .detail{
+                display:flex;
+                flex-direction:column;
+                justify-content:space-between;
+                .title{
+                    font-size:1rem;
+                    font-weight:bold;
+                }
+                .slug{
+                    font-size:0.9rem;
+                    color:#555;
+                }
+            }
+            .action{
+                a{
+                    height:40px;
+                    display:inline-flex;
+                    justify-content:center;
+                    align-items:center;
+                    font-size:0.8rem;
+                    font-weight:bold;
+                    text-decoration:none;
+                    color:#fff;
+                    background:#e52f36;
+                    padding:0 12px;
+                    border-radius:4px;
+                    box-shadow:0 2px 10px -5px #000;
+                }
             }
         }
     }

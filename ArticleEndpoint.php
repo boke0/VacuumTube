@@ -17,6 +17,9 @@ class ArticleEndpoint extends Endpoint{
         if(!file_exists(__DIR__."/../../contents/cfg.json")){
             return $this->createResponse()->withHeader("Location","/admin/install");
         }
-        return $this->twig("articles.tpl.html",$articleMdl->getDirList($path));
+        $list=$articleMdl->getDirList(urldecode($path));
+        $list["path_raw"]=$list["path"];
+        $list["path"]=urlencode($list["path"]);
+        return $this->twig("articles.tpl.html",$list);
     }
 }

@@ -1,13 +1,16 @@
-{% extends skeleton.tpl.html %}
+{% extends "skeleton.tpl.html" %}
 {% block content %}
-    <form method="POST">
-        <div>
-            <input name="path" type="text" placeholder="記事のパス">
-        </div>
-        <div>
-            <textarea name="content" placeholder="Markdownで書いてね">
-            </textarea>
-        </div>
+    <form method="POST" id="editor">
+        <dl>
+            <dt>記事のパス</dt>
+            <dd>
+                <input name="path" type="text" placeholder="記事のパス">
+            </dd>
+            <dt>本文</dt>
+            <dd>
+                <textarea name="content" placeholder="Markdownで書いてね"></textarea>
+            </dd>
+        </dl>
         {{ csrf_field() }}
         <div>
             <button>投稿</button>

@@ -1,0 +1,54 @@
+{% extends "skeleton.tpl.html" %}
+{% block content %}
+    <h2>ユーザー一覧</h2>
+    <div id="action_list">
+        <a href="/admin/users"><button>ユーザーを招待</button></a>
+    </div>
+    <div id="users">
+        {% if users|length>0 %}
+        {% for user in users %}
+            <div class="item user">
+                <div class="detail">
+                    <div class="title">
+                        {{user.title}}
+                    </div>
+                    <div class="slug">
+                        {{user.slug}}
+                    </div>
+                </div>
+                <div class="action">
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <h3>招待中</h3>
+    <div id="invite">
+        {% if invites|length>0 %}
+        {% for user in invites %}
+            <div class="item invite">
+                <div class="detail">
+                    <div class="name">
+                        {{user.name}}
+                    </div>
+                    <div class="screen_name">
+                        {{user.screen_name}}
+                    </div>
+                </div>
+                <div class="action">
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <script>
+        const dialog=document.querySelector("#delete_dialog");
+        function delete(path){
+            dialog.showModal();
+        }
+        document.querySelector("#cancel").onclick=function(){
+            dialog.close();
+        }
+    </script>
+{% endblock %}

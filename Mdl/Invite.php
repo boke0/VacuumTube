@@ -26,4 +26,7 @@ class Invite{
         ])[0];
         return $invite;
     }
+    public function list(){
+        return $this->db->query("select id,screen_name,name,token from users");
+    }
 }

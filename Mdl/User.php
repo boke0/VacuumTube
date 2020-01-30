@@ -29,4 +29,7 @@ class User{
     public function genPasswd($passwd){
         return hash("sha256",Cfg::get("passwd_key").$screen_name.$password);
     }
+    public function list(){
+        return $this->db->query("select id,screen_name,name from users");
+    }
 }
