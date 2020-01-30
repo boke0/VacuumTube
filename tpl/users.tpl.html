@@ -2,21 +2,22 @@
 {% block content %}
     <h2>ユーザー一覧</h2>
     <div id="action_list">
-        <a href="/admin/users"><button>ユーザーを招待</button></a>
+        <a href="/admin/invite"><button>ユーザーを招待</button></a>
     </div>
     <div id="users">
         {% if users|length>0 %}
         {% for user in users %}
             <div class="item user">
                 <div class="detail">
-                    <div class="title">
-                        {{user.title}}
+                    <div class="name">
+                        {{user.name}}
                     </div>
-                    <div class="slug">
-                        {{user.slug}}
+                    <div class="screen_name">
+                        {{user.screen_name}}
                     </div>
                 </div>
                 <div class="action">
+                    <a href="/admin/discard?user={{user.id}}"><button>管理者から削除</button></a>
                 </div>
             </div>
         {% endfor %}
@@ -36,6 +37,11 @@
                     </div>
                 </div>
                 <div class="action">
+                    <div>
+                        <h6>トークンURL</h6>
+                        <input type="text" value="{{user.url_token}}">
+                    </div>
+                    <a href="/discard?invite={{user.id}}"><button>キャンセル</button></a>
                 </div>
             </div>
         {% endfor %}

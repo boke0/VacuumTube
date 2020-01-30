@@ -1,0 +1,17 @@
+{% extends "skeleton.tpl.html" %}
+{% block content %}
+    <h2>{{user.name}}を削除</h2>
+    <p>執行するには、パスワードを入力してください。</p>
+    <form method="POST" id="editor">
+        <dl>
+            <dt>パスワード</dt>
+            <dd>
+                <input name="password" type="password" placeholder="パスワード" value="">
+            </dd>
+        </dl>
+        {{ csrf_field() }}
+        <div>
+            <button>削除</button>
+        </div>
+    </form>
+{% endblock %}

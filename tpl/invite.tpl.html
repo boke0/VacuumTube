@@ -1,0 +1,21 @@
+{% extends "skeleton.tpl.html" %}
+{% block content %}
+    <h2>ユーザーを招待</h2>
+    <form method="POST" id="editor">
+        <dl>
+            <dt>ID</dt>
+            <dd>
+                <input name="screen_name" type="text" placeholder="半角英数字、ハイフン、アンダーバーのみ" accept="/([a-zA-Z0-9_\-]+)/" value="">
+            </dd>
+            <dt>名前</dt>
+            <dd>
+                <input type="text" name="name" placeholder="">
+            </dd>
+        </dl>
+        <p>{{err}}</p>
+        {{ csrf_field() }}
+        <div>
+            <button>作成</button>
+        </div>
+    </form>
+{% endblock %}

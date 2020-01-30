@@ -18,7 +18,7 @@ class SettingEndpoint extends Endpoint{
         }
         $users=$userMdl->list();       
         $invites=$inviteMdl->list();       
-        return $this->twig("users.tpl.html",[
+        return $this->twig("settings.tpl.html",[
             "users"=>$users,
             "invites"=>$invites
         ]);

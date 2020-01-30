@@ -2,8 +2,8 @@
 {% block content %}
     <dialog id="delete_dialog">
         <h1 id="delete_path"></h1>
-        <p id="delete_description">この操作のあと、記事を復元することはできません</p>
-        <form id="delete_actions" action="/admin/article/delete">
+        <p id="delete_description">この操作のあと、復元することはできません</p>
+        <form id="delete_actions" method="POST" action="/admin/delete">
             <input type="hidden" name="path" id="delete_path_field">
             {{csrf_field()}}
             <button id="cancel" type="button">キャンセル</button>
@@ -20,6 +20,11 @@
         </dl>
     </dialog>
     <h2>{{path_raw}}の記事</h2>
+    {% if upper %}
+    <div id="upper">
+        <a href="/admin/articles?path={{upper}}">一つ上のセクションへ</a>
+    </div>
+    {% endif %}
     <div id="action_list">
         <a href="/admin/editor?path={{path}}"><button>このセクションに投稿</button></a>
         <a href="/admin/section?path={{path}}"><button>新規セクション</button></a>
@@ -37,6 +42,11 @@
                     <div class="slug">
                         {{section.slug}}
                     </div>
+                </div>
+                <div class="action">
+                    <button onclick="del('{{section.path}}')">
+                        セクションを削除
+                    </button>
                 </div>
             </div>
         {% endfor %}
@@ -100,7 +110,8 @@
     </div>
     <script>
         const dialog=document.querySelector("#delete_dialog");
-        function delete(path){
+        function del(path){
+            document.querySelector("#delete_path_field").value=path;
             dialog.showModal();
         }
         document.querySelector("#cancel").onclick=function(){

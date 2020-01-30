@@ -4,7 +4,7 @@ namespace Boke0\Mechanism\Plugins\VacuumTube\Mdl;
 use \Boke0\Mechanism\MarkdownParser;
 
 class Article{
-    const ROOTPATH="/../../../contents/";
+    const ROOTPATH="/../../../contents";
     public function __construct(){
         $this->parser=new \Mni\FrontYAML\Parser(
             NULL,
@@ -12,8 +12,8 @@ class Article{
         );
     }
     public function getDirList($path){
-        if(substr($path,0,1)!="/") $path="/$path";
         if(substr($path,-1,1)!="/") $path="$path/";
+        if(substr($path,0,1)!="/") $path="/$path";
         $list=[
             "sections"=>array(),
             "pages"=>array(),
@@ -29,7 +29,7 @@ class Article{
         $dir=array_slice(scandir(__DIR__.self::ROOTPATH.$path),2);
         foreach($dir as $n){
             if(substr($n,0,1)=="."||substr($n,-4)=="json"||$n=="__menu.md") continue;
-            if(is_dir(__DIR__.self::ROOTPATH.$n)){
+            if(is_dir(__DIR__.self::ROOTPATH.$path.$n)){
                 if(file_exists(__DIR__.self::ROOTPATH.$path.$n."/__index.md")){
                     $text=$this->parser->parse(
                         file_get_contents(__DIR__.self::ROOTPATH.$path.$n."/__index.md")
@@ -72,6 +72,7 @@ class Article{
         return file_get_contents(__DIR__.self::ROOTPATH.$path);
     }
     public function postArticle($path,$markdown){
+        if(file_exists(__DIR__.self::ROOTPATH.$path)) unlink(__DIR__.self::ROOTPATH.$path);
         $fp=fopen(__DIR__.self::ROOTPATH.$path,"w");
         fwrite($fp,$markdown);
         fclose($fp);

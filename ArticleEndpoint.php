@@ -10,7 +10,7 @@ class ArticleEndpoint extends Endpoint{
     public function handle($req,$args){
         $qs=$req->getQueryParams();
         $articleMdl=new Mdl\Article();
-        $path=isset($qs["path"])?$qs["path"]:"/";
+        $path=isset($qs["path"])?$qs["path"]:"";
         if(Session::get("vt_uid")==NULL){
             return $this->createResponse()->withHeader("Location","/admin/login");
         }
@@ -20,6 +20,9 @@ class ArticleEndpoint extends Endpoint{
         $list=$articleMdl->getDirList(urldecode($path));
         $list["path_raw"]=$list["path"];
         $list["path"]=urlencode($list["path"]);
+        if($path!="/"){
+            $list["upper"]=urlencode(dirname($path));
+        }
         return $this->twig("articles.tpl.html",$list);
     }
 }

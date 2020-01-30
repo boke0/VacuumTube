@@ -16,8 +16,11 @@ class UserEndpoint extends Endpoint{
         if(!file_exists(__DIR__."/../../contents/cfg.json")){
             return $this->createResponse()->withHeader("Location","/admin/install");
         }
-        $users=$userMdl->list();       
-        $invites=$inviteMdl->list();       
+        $users=$userMdl->list();
+        $invites=$inviteMdl->list();  
+        foreach($invites as $k=>$invite){
+            $invites[$k]["url_token"]="http://".$req->getServerParams()["HTTP_HOST"]."/admin/signup?token={$invite["token"]}";
+        }
         return $this->twig("users.tpl.html",[
             "users"=>$users,
             "invites"=>$invites

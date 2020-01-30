@@ -19,6 +19,16 @@ class User{
         $this->invite->delete($invite["id"]);
         return $id;
     }
+    public function get($id){
+        return $this->db->query("select id,name,screen_name from user where id=:id",[
+            ":id"=>$id
+        ])[0];
+    }
+    public function delete($id){
+        $this->db->query("delete from user where id=:id",[
+            ":id"=>$id
+        ]);
+    }
     public function login($screen_name,$password){
         $id=$this->db->query("select id from user where screen_name=:screen_name and password=:password",[
             ":screen_name"=>$screen_name,
@@ -26,10 +36,21 @@ class User{
         ])[0]["id"];
         return $id;
     }
+    public function verify($id,$passwd){
+        return $this->db->query("select count(*) as c from user where id=:id and password=:pass",[
+            ":id"=>$id,
+            ":pass"=>$this->genPasswd($passwd)
+        ])[0]>0;
+    }
     public function genPasswd($passwd){
         return hash("sha256",Cfg::get("passwd_key").$screen_name.$password);
     }
     public function list(){
-        return $this->db->query("select id,screen_name,name from users");
+        return $this->db->query("select id,screen_name,name from user");
+    }
+    public function screenNameExists($screen_name){
+        return $this->db->query("select count(*) as c from user where screen_name=:screen_name",[
+            ":screen_name"=>$screen_name
+        ])[0]["c"]>0;
     }
 }

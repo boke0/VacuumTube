@@ -1,7 +1,12 @@
+@font-face{
+    font-family: "kokumin";
+    src: url("/asset?plugin=VacuumTube&filename=kokumin.ttf");
+}
 body{
     margin:0;
     color:#fff;
     overflow-x:hidden;
+    font-family:"kokumin";
 }
 a{
     text-decoration:none;
@@ -18,6 +23,7 @@ button{
     box-shadow:0 5px 10px -8px #000;
     background-color:#e52f36;
     font-weight:bold;
+    font-family:"kokumin";
     color:#fff;
 }
 @mixin pc{
