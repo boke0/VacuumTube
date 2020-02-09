@@ -22,7 +22,7 @@ class InstallEndpoint extends Endpoint{
             Cfg::set("dbpass","$pass");
             Cfg::set("passwd_key",hash("sha256",uniqid().mt_rand()));
             $sql=<<<EOT
-use bm;
+use `$dbname`;
 create table user(
     id int not null primary key auto_increment,
     screen_name varchar(255) not null unique,
